@@ -42,7 +42,9 @@ namespace EikonDataAPI
             {
                 var str = CreateCSVFromDataResponse(response);
                 var stream = GenerateStreamFromString(str);
-                return DataFrame.LoadCsv(stream);
+                return DataFrame.LoadCsv(stream, ',', true, null, null, -1, response.totalRowsCount);
+                //return DataFrame.LoadCsv(stream);
+
             }
             else
             {
