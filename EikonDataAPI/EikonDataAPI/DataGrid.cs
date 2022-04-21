@@ -32,8 +32,8 @@ namespace EikonDataAPI
             if (json["responses"][0]["estimatedDuration"] != null)
             {
                 string sleeptime = json["responses"][0]["estimatedDuration"].ToString();
-                _logger.LogDebug($"Sleep {sleeptime}");
-                System.Threading.Thread.Sleep(Int32.Parse(sleeptime));
+                _logger.LogDebug($"Sleep 15 seconds");
+                System.Threading.Thread.Sleep(15000);
             }
 
 
