@@ -5,6 +5,9 @@ using Microsoft.Data.Analysis;
 using Newtonsoft.Json;
 using System.Linq;
 using System.IO;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
+using System.Globalization;
 
 namespace EikonDataAPI
 {
@@ -20,6 +23,20 @@ namespace EikonDataAPI
             stream.Position = 0;
             return stream;
         }
+        private string FormatCSVSrting(JValue value)
+        {
+            //string temp = String.Format(CultureInfo.InvariantCulture, "{0}", value.Value);
+            string temp = String.Format("{0}", value.Value);
+            if (temp.Contains(','))
+            {
+                return String.Format(CultureInfo.InvariantCulture, "\"{0}\"",temp);
+
+            }
+            else
+            {
+                return temp;
+            }
+        }
         private string CreateCSVFromDataResponse(DataResponse response)
         {
             StringBuilder sbuilder = new StringBuilder();
@@ -27,12 +44,13 @@ namespace EikonDataAPI
             sbuilder.AppendLine(string.Join(",",response.headers.First().Select(col => {
                 return col.displayName;
             })));
-
+            
             foreach(var row in response.data)
             {
-                sbuilder.AppendLine(string.Join(",", row.Select(value => { return value.Value; })));
+                sbuilder.AppendLine(string.Join(",", row.Select(value => { return FormatCSVSrting(value); })));
             }
 
+            _logger.LogDebug(sbuilder.ToString());
 
             return sbuilder.ToString();
         }
