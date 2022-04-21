@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>EikonDataAPI</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageId>EikonDataAPI</PackageId>
+    <Version>0.4.9</Version>
+    <Authors>Developer Advocate</Authors>
+    <Company>Refinitiv</Company>
+    <Product>EikonDataAPI</Product>
+    <Copyright>202</Copyright>
+    <RepositoryUrl>https://github.com/Refinitiv-API-Samples/Article.EikonDataAPI.DotNet.Library</RepositoryUrl>
+    <AssemblyVersion>2.0.4.9</AssemblyVersion>
+    <FileVersion>2.0.4.9</FileVersion>
+    <PlatformTarget>x64</PlatformTarget>
+    <AssemblyName>EikonDataAPI</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\EikonDataAPI\DataGrid.cs" Link="DataGrid.cs" />
+    <Compile Include="..\EikonDataAPI\Eikon.cs" Link="Eikon.cs" />
+    <Compile Include="..\EikonDataAPI\EndPoint.cs" Link="EndPoint.cs" />
+    <Compile Include="..\EikonDataAPI\Interface\IDataGrid.cs" Link="Interface\IDataGrid.cs" />
+    <Compile Include="..\EikonDataAPI\Interface\IEikon.cs" Link="Interface\IEikon.cs" />
+    <Compile Include="..\EikonDataAPI\Interface\INewsHeadlines.cs" Link="Interface\INewsHeadlines.cs" />
+    <Compile Include="..\EikonDataAPI\Interface\INewsStory.cs" Link="Interface\INewsStory.cs" />
+    <Compile Include="..\EikonDataAPI\Interface\ISymbologySearch.cs" Link="Interface\ISymbologySearch.cs" />
+    <Compile Include="..\EikonDataAPI\Interface\ITimeSeries.cs" Link="Interface\ITimeSeries.cs" />
+    <Compile Include="..\EikonDataAPI\JSONRequest.cs" Link="JSONRequest.cs" />
+    <Compile Include="..\EikonDataAPI\ListEnumToCsvConverter.cs" Link="ListEnumToCsvConverter.cs" />
+    <Compile Include="..\EikonDataAPI\NewsHeadlines.cs" Link="NewsHeadlines.cs" />
+    <Compile Include="..\EikonDataAPI\NewsStory.cs" Link="NewsStory.cs" />
+    <Compile Include="..\EikonDataAPI\Profile.cs" Link="Profile.cs" />
+    <Compile Include="..\EikonDataAPI\SymbologySearch.cs" Link="SymbologySearch.cs" />
+    <Compile Include="..\EikonDataAPI\TimeSeries.cs" Link="TimeSeries.cs" />
+    <Compile Include="..\EikonDataAPI_CORE20\DataFrame\Impl\DataGrid.cs" Link="DataFrame\Impl\DataGrid.cs" />
+    <Compile Include="..\EikonDataAPI_CORE20\DataFrame\Impl\Eikon.cs" Link="DataFrame\Impl\Eikon.cs" />
+    <Compile Include="..\EikonDataAPI_CORE20\DataFrame\Impl\NewsHeadlines.cs" Link="DataFrame\Impl\NewsHeadlines.cs" />
+    <Compile Include="..\EikonDataAPI_CORE20\DataFrame\Impl\SymbologySearch.cs" Link="DataFrame\Impl\SymbologySearch.cs" />
+    <Compile Include="..\EikonDataAPI_CORE20\DataFrame\Impl\TimeSeries.cs" Link="DataFrame\Impl\TimeSeries.cs" />
+    <Compile Include="..\EikonDataAPI_CORE20\DataFrame\Interface\IDataGrid.cs" Link="DataFrame\Interface\IDataGrid.cs" />
+    <Compile Include="..\EikonDataAPI_CORE20\DataFrame\Interface\INewsHeadlines.cs" Link="DataFrame\Interface\INewsHeadlines.cs" />
+    <Compile Include="..\EikonDataAPI_CORE20\DataFrame\Interface\ISymbologySearch.cs" Link="DataFrame\Interface\ISymbologySearch.cs" />
+    <Compile Include="..\EikonDataAPI_CORE20\DataFrame\Interface\ITimeSeries.cs" Link="DataFrame\Interface\ITimeSeries.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DataFrame\Impl\" />
+    <Folder Include="DataFrame\Interface\" />
+    <Folder Include="Interface\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Analysis" Version="0.19.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+</Project>
