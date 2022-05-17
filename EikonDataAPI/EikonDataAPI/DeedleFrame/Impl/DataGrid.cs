@@ -29,15 +29,37 @@ namespace EikonDataAPI
             {
                 for (int j = 0; j < response.headers.First().Count(); j++)
                 {
-                    if(response.data[0][j].Type == Newtonsoft.Json.Linq.JTokenType.Integer)
+                   // if(response.data[0][j].Type == Newtonsoft.Json.Linq.JTokenType.Integer)
+                   //Fix the problem when column contains float but the first item is integer or missing (string)
                     {
-                        if(response.data[0][j].ToObject<int>() == 0)
+                        if (HasFloatInColumn(response, j))
                         {
-                            if(HasFloatInColumn(response, j))
+                            if (response.data[0][j].Type == Newtonsoft.Json.Linq.JTokenType.Integer)
                             {
-                                response.data[0][j].Value = 0.0;
+                                //When the first item is integer
+                                response.data[0][j].Value = (double)(response.data[0][j].ToObject<int>() * 1.0);
+                            }
+                            else
+                            {
+                                //When the first item is missing (string).
+                                for(int i = 1;i < response.data.Count; i++)
+                                {
+                                    if (response.data[i][j].Type == Newtonsoft.Json.Linq.JTokenType.Integer)
+                                    {
+                                        response.data[i][j].Value = (double)(response.data[i][j].ToObject<int>() * 1.0);
+                                        break;
+                                    }
+                                }
                             }
                         }
+
+                        // if(response.data[0][j].ToObject<int>() == 0)
+                        //{
+                        //   if(HasFloatInColumn(response, j))
+                        //   {
+                        //       response.data[0][j].Value = 0.0;
+                        //  }
+                        //}
 
                     }
                 }
